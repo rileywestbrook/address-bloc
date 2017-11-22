@@ -56,6 +56,21 @@ class MenuController
     puts "End of entries"
   end
 
+  def view_entry_number
+    print "View your selection number: "
+    selection = gets.chomp.to_i
+    if selection < @address_book.entries.count
+      puts @address_book.entries[selection]
+      puts "Press enter to return home"
+      gets.chomp
+      system "clear"
+    else
+      system "clear"
+      puts "#{selection} is not a valid input"
+      view_entry_number
+    end
+  end
+
   def create_entry
     system "clear"
     puts "New AddressBloc Entry"
